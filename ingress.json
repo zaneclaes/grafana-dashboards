@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 2,
-  "iteration": 1565788342921,
+  "iteration": 1565820201671,
   "links": [],
   "panels": [
     {
@@ -58,7 +58,7 @@
       "format": "short",
       "gridPos": {
         "h": 8,
-        "w": 8,
+        "w": 24,
         "x": 0,
         "y": 1
       },
@@ -79,152 +79,6 @@
       "pluginVersion": "6.2.5",
       "repeat": "hosts",
       "repeatDirection": "h",
-      "scopedVars": {
-        "hosts": {
-          "selected": true,
-          "text": "api.experium.online",
-          "value": "api.experium.online"
-        }
-      },
-      "strokeWidth": 1,
-      "targets": [
-        {
-          "expr": "sum by(http_status_code) (increase(promtail_custom_requests{container_name=~\"$containers\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\"}[$__interval])) != 0",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{ http_status_code }}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$hosts",
-      "type": "grafana-piechart-panel",
-      "valueName": "current"
-    },
-    {
-      "aliasColors": {
-        "200": "#73BF69",
-        "301": "#FFF899",
-        "302": "#FFEE52",
-        "304": "#FADE2A",
-        "401": "#FFCB7D",
-        "403": "#FFB357",
-        "404": "#FF9830",
-        "426": "#FF780A",
-        "500": "#C4162A",
-        "503": "#E02F44",
-        "504": "#FF7383"
-      },
-      "breakPoint": "100%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": 0
-      },
-      "decimals": null,
-      "description": "HTTP Response Codes",
-      "fontSize": "80%",
-      "format": "short",
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 1
-      },
-      "id": 46,
-      "interval": "30s",
-      "legend": {
-        "percentage": true,
-        "show": true,
-        "sideWidth": null,
-        "values": true
-      },
-      "legendType": "Right side",
-      "links": [],
-      "maxDataPoints": 3,
-      "nullPointMode": "connected",
-      "options": {},
-      "pieType": "donut",
-      "pluginVersion": "6.2.5",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1565788342921,
-      "repeatPanelId": 14,
-      "scopedVars": {
-        "hosts": {
-          "selected": true,
-          "text": "blog.experium.online",
-          "value": "blog.experium.online"
-        }
-      },
-      "strokeWidth": 1,
-      "targets": [
-        {
-          "expr": "sum by(http_status_code) (increase(promtail_custom_requests{container_name=~\"$containers\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\"}[$__interval])) != 0",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{ http_status_code }}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$hosts",
-      "type": "grafana-piechart-panel",
-      "valueName": "current"
-    },
-    {
-      "aliasColors": {
-        "200": "#73BF69",
-        "301": "#FFF899",
-        "302": "#FFEE52",
-        "304": "#FADE2A",
-        "401": "#FFCB7D",
-        "403": "#FFB357",
-        "404": "#FF9830",
-        "426": "#FF780A",
-        "500": "#C4162A",
-        "503": "#E02F44",
-        "504": "#FF7383"
-      },
-      "breakPoint": "100%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": 0
-      },
-      "decimals": null,
-      "description": "HTTP Response Codes",
-      "fontSize": "80%",
-      "format": "short",
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 1
-      },
-      "id": 47,
-      "interval": "30s",
-      "legend": {
-        "percentage": true,
-        "show": true,
-        "sideWidth": null,
-        "values": true
-      },
-      "legendType": "Right side",
-      "links": [],
-      "maxDataPoints": 3,
-      "nullPointMode": "connected",
-      "options": {},
-      "pieType": "donut",
-      "pluginVersion": "6.2.5",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1565788342921,
-      "repeatPanelId": 14,
       "scopedVars": {
         "hosts": {
           "selected": true,
@@ -283,15 +137,15 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "alias": "technicallywizardry.com",
+          "alias": "/^technicallywizardry.com.*/",
           "color": "#B877D9"
         },
         {
-          "alias": "skillcookbook.com",
+          "alias": "/^skillcookbook.com.*/",
           "color": "#5794F2"
         },
         {
-          "alias": "grafana.datasculpt.io",
+          "alias": "/^grafana.datasculpt.io.*/",
           "color": "rgba(202, 202, 202, 0.82)"
         },
         {
@@ -382,298 +236,12 @@
           "dashes": false,
           "fill": 1,
           "gridPos": {
-            "h": 9,
-            "w": 24,
-            "x": 0,
-            "y": 19
-          },
-          "id": 40,
-          "interval": "30s",
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": false,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {},
-          "percentage": false,
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "scopedVars": {
-            "hosts": {
-              "selected": true,
-              "text": "api.experium.online",
-              "value": "api.experium.online"
-            }
-          },
-          "seriesOverrides": [
-            {
-              "alias": "/^200.*$/",
-              "color": "#73BF69"
-            },
-            {
-              "alias": "/^401.*$/",
-              "color": "#FFCB7D"
-            },
-            {
-              "alias": "/^403.*$/",
-              "color": "#FFB357"
-            },
-            {
-              "alias": "/^404.*$/",
-              "color": "#FF9830"
-            },
-            {
-              "alias": "/^426.*$/",
-              "color": "#FF780A"
-            },
-            {
-              "alias": "/^301.*$/",
-              "color": "#FFF899"
-            },
-            {
-              "alias": "/^302.*$/",
-              "color": "#FFEE52"
-            },
-            {
-              "alias": "/^304.*$/",
-              "color": "#FADE2A"
-            },
-            {
-              "alias": "/^500.*$/",
-              "color": "#C4162A"
-            },
-            {
-              "alias": "/^503.*$/",
-              "color": "#E02F44"
-            },
-            {
-              "alias": "/^504.*$/",
-              "color": "#FF7383"
-            }
-          ],
-          "spaceLength": 10,
-          "stack": true,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(idelta(promtail_custom_requests{container_name=~\"$containers\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\"}[$__interval])) by (container_name, page, http_status_code) != 0",
-              "format": "time_series",
-              "interval": "",
-              "intervalFactor": 1,
-              "legendFormat": "{{ http_status_code }} [{{ container_name }}] {{ page }}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "[$hosts] status codes",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "fill": 1,
-          "gridPos": {
-            "h": 9,
-            "w": 24,
-            "x": 0,
-            "y": 28
-          },
-          "id": 4,
-          "interval": "30s",
-          "legend": {
-            "avg": true,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {},
-          "percentage": false,
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "scopedVars": {
-            "hosts": {
-              "selected": true,
-              "text": "api.experium.online",
-              "value": "api.experium.online"
-            }
-          },
-          "seriesOverrides": [
-            {
-              "alias": "switchboard queries",
-              "bars": true,
-              "color": "#cccccc",
-              "lines": false,
-              "yaxis": 2
-            },
-            {
-              "alias": "multipress queries",
-              "bars": true,
-              "color": "#C4162A",
-              "lines": false,
-              "yaxis": 2
-            },
-            {
-              "alias": "switchboard bytes",
-              "color": "#cccccc"
-            },
-            {
-              "alias": "multipress bytes",
-              "color": "#C4162A"
-            }
-          ],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(idelta(promtail_custom_requests{container_name=~\"$containers\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by(container_name, http_host)",
-              "format": "time_series",
-              "interval": "",
-              "intervalFactor": 1,
-              "legendFormat": "{{ container_name }} queries",
-              "refId": "C"
-            },
-            {
-              "expr": "sum(irate(promtail_custom_bytes_written{container_name=~\"$containers\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by(container_name, http_host)",
-              "format": "time_series",
-              "intervalFactor": 1,
-              "legendFormat": "{{ container_name }} bytes",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "[$hosts] successful throughput",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "decimals": null,
-              "format": "Bps",
-              "label": "",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "opm",
-              "label": "",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        }
-      ],
-      "repeat": "hosts",
-      "scopedVars": {
-        "hosts": {
-          "selected": true,
-          "text": "api.experium.online",
-          "value": "api.experium.online"
-        }
-      },
-      "title": "$hosts",
-      "type": "row"
-    },
-    {
-      "collapsed": true,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 19
-      },
-      "id": 48,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": true,
-          "dashLength": 10,
-          "dashes": false,
-          "fill": 1,
-          "gridPos": {
             "h": 8,
             "w": 24,
             "x": 0,
             "y": 19
           },
-          "id": 49,
+          "id": 45,
           "interval": "30s",
           "legend": {
             "avg": false,
@@ -693,14 +261,11 @@
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
-          "repeatIteration": 1565788342921,
-          "repeatPanelId": 45,
-          "repeatedByRow": true,
           "scopedVars": {
             "hosts": {
               "selected": true,
-              "text": "blog.experium.online",
-              "value": "blog.experium.online"
+              "text": "technicallywizardry.com",
+              "value": "technicallywizardry.com"
             }
           },
           "seriesOverrides": [],
@@ -709,7 +274,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(idelta(promtail_custom_requests{container_name=~\"$containers\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by (page) != 0",
+              "expr": "avg(idelta(promtail_custom_request_duration_count{container_name=~\"$containers\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by (page) != 0",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -722,7 +287,7 @@
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "[$hosts] top OK requests",
+          "title": "[$hosts] OK response duration",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -738,7 +303,7 @@
           },
           "yaxes": [
             {
-              "format": "short",
+              "format": "s",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -771,7 +336,7 @@
             "x": 0,
             "y": 27
           },
-          "id": 50,
+          "id": 40,
           "interval": "30s",
           "legend": {
             "avg": false,
@@ -791,14 +356,11 @@
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
-          "repeatIteration": 1565788342921,
-          "repeatPanelId": 40,
-          "repeatedByRow": true,
           "scopedVars": {
             "hosts": {
               "selected": true,
-              "text": "blog.experium.online",
-              "value": "blog.experium.online"
+              "text": "technicallywizardry.com",
+              "value": "technicallywizardry.com"
             }
           },
           "seriesOverrides": [
@@ -913,7 +475,7 @@
             "x": 0,
             "y": 36
           },
-          "id": 51,
+          "id": 4,
           "interval": "30s",
           "legend": {
             "avg": true,
@@ -933,401 +495,6 @@
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
-          "repeatIteration": 1565788342921,
-          "repeatPanelId": 4,
-          "repeatedByRow": true,
-          "scopedVars": {
-            "hosts": {
-              "selected": true,
-              "text": "blog.experium.online",
-              "value": "blog.experium.online"
-            }
-          },
-          "seriesOverrides": [
-            {
-              "alias": "switchboard queries",
-              "bars": true,
-              "color": "#cccccc",
-              "lines": false,
-              "yaxis": 2
-            },
-            {
-              "alias": "multipress queries",
-              "bars": true,
-              "color": "#C4162A",
-              "lines": false,
-              "yaxis": 2
-            },
-            {
-              "alias": "switchboard bytes",
-              "color": "#cccccc"
-            },
-            {
-              "alias": "multipress bytes",
-              "color": "#C4162A"
-            }
-          ],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(idelta(promtail_custom_requests{container_name=~\"$containers\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by(container_name, http_host)",
-              "format": "time_series",
-              "interval": "",
-              "intervalFactor": 1,
-              "legendFormat": "{{ container_name }} queries",
-              "refId": "C"
-            },
-            {
-              "expr": "sum(irate(promtail_custom_bytes_written{container_name=~\"$containers\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by(container_name, http_host)",
-              "format": "time_series",
-              "intervalFactor": 1,
-              "legendFormat": "{{ container_name }} bytes",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "[$hosts] successful throughput",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "decimals": null,
-              "format": "Bps",
-              "label": "",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "opm",
-              "label": "",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        }
-      ],
-      "repeat": null,
-      "repeatIteration": 1565788342921,
-      "repeatPanelId": 6,
-      "scopedVars": {
-        "hosts": {
-          "selected": true,
-          "text": "blog.experium.online",
-          "value": "blog.experium.online"
-        }
-      },
-      "title": "$hosts",
-      "type": "row"
-    },
-    {
-      "collapsed": true,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 20
-      },
-      "id": 52,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": true,
-          "dashLength": 10,
-          "dashes": false,
-          "fill": 1,
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 21
-          },
-          "id": 53,
-          "interval": "30s",
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": false,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "connected",
-          "options": {},
-          "percentage": false,
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "repeatIteration": 1565788342921,
-          "repeatPanelId": 45,
-          "repeatedByRow": true,
-          "scopedVars": {
-            "hosts": {
-              "selected": true,
-              "text": "technicallywizardry.com",
-              "value": "technicallywizardry.com"
-            }
-          },
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(idelta(promtail_custom_requests{container_name=~\"$containers\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by (page) != 0",
-              "format": "time_series",
-              "instant": false,
-              "interval": "",
-              "intervalFactor": 1,
-              "legendFormat": "{{ page }}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "[$hosts] top OK requests",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": true,
-          "dashLength": 10,
-          "dashes": false,
-          "fill": 1,
-          "gridPos": {
-            "h": 9,
-            "w": 24,
-            "x": 0,
-            "y": 29
-          },
-          "id": 54,
-          "interval": "30s",
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": false,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {},
-          "percentage": false,
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "repeatIteration": 1565788342921,
-          "repeatPanelId": 40,
-          "repeatedByRow": true,
-          "scopedVars": {
-            "hosts": {
-              "selected": true,
-              "text": "technicallywizardry.com",
-              "value": "technicallywizardry.com"
-            }
-          },
-          "seriesOverrides": [
-            {
-              "alias": "/^200.*$/",
-              "color": "#73BF69"
-            },
-            {
-              "alias": "/^401.*$/",
-              "color": "#FFCB7D"
-            },
-            {
-              "alias": "/^403.*$/",
-              "color": "#FFB357"
-            },
-            {
-              "alias": "/^404.*$/",
-              "color": "#FF9830"
-            },
-            {
-              "alias": "/^426.*$/",
-              "color": "#FF780A"
-            },
-            {
-              "alias": "/^301.*$/",
-              "color": "#FFF899"
-            },
-            {
-              "alias": "/^302.*$/",
-              "color": "#FFEE52"
-            },
-            {
-              "alias": "/^304.*$/",
-              "color": "#FADE2A"
-            },
-            {
-              "alias": "/^500.*$/",
-              "color": "#C4162A"
-            },
-            {
-              "alias": "/^503.*$/",
-              "color": "#E02F44"
-            },
-            {
-              "alias": "/^504.*$/",
-              "color": "#FF7383"
-            }
-          ],
-          "spaceLength": 10,
-          "stack": true,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(idelta(promtail_custom_requests{container_name=~\"$containers\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\"}[$__interval])) by (container_name, page, http_status_code) != 0",
-              "format": "time_series",
-              "interval": "",
-              "intervalFactor": 1,
-              "legendFormat": "{{ http_status_code }} [{{ container_name }}] {{ page }}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "[$hosts] status codes",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "fill": 1,
-          "gridPos": {
-            "h": 9,
-            "w": 24,
-            "x": 0,
-            "y": 38
-          },
-          "id": 55,
-          "interval": "30s",
-          "legend": {
-            "avg": true,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {},
-          "percentage": false,
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "repeatIteration": 1565788342921,
-          "repeatPanelId": 4,
-          "repeatedByRow": true,
           "scopedVars": {
             "hosts": {
               "selected": true,
@@ -1422,9 +589,7 @@
           }
         }
       ],
-      "repeat": null,
-      "repeatIteration": 1565788342921,
-      "repeatPanelId": 6,
+      "repeat": "hosts",
       "scopedVars": {
         "hosts": {
           "selected": true,
@@ -1445,7 +610,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
+          "selected": true,
           "tags": [],
           "text": "switchboard",
           "value": [
@@ -1474,10 +639,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "api.experium.online + blog.experium.online + technicallywizardry.com",
+          "text": "technicallywizardry.com",
           "value": [
-            "api.experium.online",
-            "blog.experium.online",
             "technicallywizardry.com"
           ]
         },
@@ -1529,7 +692,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
