@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 2,
-  "iteration": 1565820201671,
+  "iteration": 1566592644324,
   "links": [],
   "panels": [
     {
@@ -89,7 +89,7 @@
       "strokeWidth": 1,
       "targets": [
         {
-          "expr": "sum by(http_status_code) (increase(promtail_custom_requests{container_name=~\"$containers\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\"}[$__interval])) != 0",
+          "expr": "sum by(http_status_code) (increase(promtail_custom_requests{container_name=~\"$containers\",http_status_code=~\"$codes\",http_method=~\"$methods\",http_proto=~\"$protos\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\"}[$__interval])) != 0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -161,7 +161,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(idelta(promtail_custom_requests{container_name=~\"$containers\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by(http_host)",
+          "expr": "sum(idelta(promtail_custom_requests{container_name=~\"$containers\",http_method=~\"$methods\",http_proto=~\"$protos\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by(http_host)",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -170,7 +170,7 @@
           "refId": "C"
         },
         {
-          "expr": "sum(irate(promtail_custom_bytes_written{container_name=~\"$containers\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by(http_host)",
+          "expr": "sum(irate(promtail_custom_bytes_written{container_name=~\"$containers\",http_method=~\"$methods\",http_proto=~\"$protos\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by(http_host)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{ http_host }} bytes",
@@ -274,7 +274,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "avg(idelta(promtail_custom_request_duration_count{container_name=~\"$containers\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by (page) != 0",
+              "expr": "sum(idelta(promtail_custom_request_duration_sum{container_name=~\"$containers\",http_method=~\"$methods\",http_proto=~\"$protos\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by (page) != 0",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -303,7 +303,7 @@
           },
           "yaxes": [
             {
-              "format": "s",
+              "format": "ms",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -414,7 +414,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(idelta(promtail_custom_requests{container_name=~\"$containers\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\"}[$__interval])) by (container_name, page, http_status_code) != 0",
+              "expr": "sum(idelta(promtail_custom_requests{container_name=~\"$containers\",http_method=~\"$methods\",http_status_code=~\"$codes\",http_proto=~\"$protos\",http_useragent_type=~\"$useragent_types\",http_host=~\"$hosts\"}[$__interval])) by (container_name, page, http_status_code) != 0",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -531,7 +531,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(idelta(promtail_custom_requests{container_name=~\"$containers\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by(container_name, http_host)",
+              "expr": "sum(idelta(promtail_custom_requests{container_name=~\"$containers\",http_status_code=~\"$codes\",http_method=~\"$methods\",http_proto=~\"$protos\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by(container_name, http_host)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -539,7 +539,7 @@
               "refId": "C"
             },
             {
-              "expr": "sum(irate(promtail_custom_bytes_written{container_name=~\"$containers\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by(container_name, http_host)",
+              "expr": "sum(irate(promtail_custom_bytes_written{container_name=~\"$containers\",http_status_code=~\"$codes\",http_method=~\"$methods\",http_proto=~\"$protos\",http_host=~\"$hosts\",http_status_code=\"200\"}[$__interval])) by(container_name, http_host)",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{ container_name }} bytes",
@@ -611,11 +611,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "tags": [],
           "text": "switchboard",
-          "value": [
-            "switchboard"
-          ]
+          "value": "switchboard"
         },
         "datasource": "Prometheus",
         "definition": "label_values(promtail_custom_requests, container_name)",
@@ -640,9 +637,7 @@
         "allValue": null,
         "current": {
           "text": "technicallywizardry.com",
-          "value": [
-            "technicallywizardry.com"
-          ]
+          "value": "technicallywizardry.com"
         },
         "datasource": "Prometheus",
         "definition": "label_values(promtail_custom_requests, http_host)",
@@ -667,6 +662,175 @@
         "allValue": null,
         "current": {
           "selected": true,
+          "text": "https",
+          "value": "https"
+        },
+        "hide": 0,
+        "includeAll": true,
+        "label": "Schema",
+        "multi": true,
+        "name": "protos",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "http",
+            "value": "http"
+          },
+          {
+            "selected": true,
+            "text": "https",
+            "value": "https"
+          }
+        ],
+        "query": "http,https",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "hide": 0,
+        "includeAll": true,
+        "label": "Method",
+        "multi": true,
+        "name": "methods",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "POST",
+            "value": "POST"
+          },
+          {
+            "selected": false,
+            "text": "GET",
+            "value": "GET"
+          },
+          {
+            "selected": false,
+            "text": "PUT",
+            "value": "PUT"
+          },
+          {
+            "selected": false,
+            "text": "PATCH",
+            "value": "PATCH"
+          },
+          {
+            "selected": false,
+            "text": "DELETE",
+            "value": "DELETE"
+          }
+        ],
+        "query": "POST,GET,PUT,PATCH,DELETE",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "200",
+          "value": [
+            "200"
+          ]
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(promtail_custom_requests, http_status_code)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Status Codes",
+        "multi": true,
+        "name": "codes",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": true,
+            "text": "200",
+            "value": "200"
+          },
+          {
+            "selected": false,
+            "text": "404",
+            "value": "404"
+          },
+          {
+            "selected": false,
+            "text": "301",
+            "value": "301"
+          },
+          {
+            "selected": false,
+            "text": "499",
+            "value": "499"
+          },
+          {
+            "selected": false,
+            "text": "0",
+            "value": "0"
+          },
+          {
+            "selected": false,
+            "text": "503",
+            "value": "503"
+          },
+          {
+            "selected": false,
+            "text": "302",
+            "value": "302"
+          },
+          {
+            "selected": false,
+            "text": "304",
+            "value": "304"
+          },
+          {
+            "selected": false,
+            "text": "400",
+            "value": "400"
+          },
+          {
+            "selected": false,
+            "text": "401",
+            "value": "401"
+          },
+          {
+            "selected": false,
+            "text": "426",
+            "value": "426"
+          }
+        ],
+        "query": "label_values(promtail_custom_requests, http_status_code)",
+        "refresh": 0,
+        "regex": "\\d+",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
           "text": "All",
           "value": "$__all"
         },
@@ -692,7 +856,7 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
